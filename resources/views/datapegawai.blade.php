@@ -22,6 +22,7 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Foto</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">No Telepon</th>
                 <th scope="col">History</th>
@@ -38,6 +39,9 @@
                 <tr>
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{ $row->nama }}</td>
+                    <td>
+                        <img src="{{ asset('fotopegawai/' . $row->foto ) }}" alt="" style="width: 40px;">
+                    </td>
                     <td>{{ $row->jenis_kelamin }}</td>
                     <td>0{{ $row->notelpon }}</td>
                     <td>{{ $row->created_at->format('D M Y')}}</td>
@@ -47,6 +51,7 @@
                     </td>
                   </tr>
                 @endforeach
+
 
             </tbody>
           </table>
