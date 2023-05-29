@@ -1,0 +1,33 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url("../img/bg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.navbar .navbar-brand img {
+    margin-right: 20px;
+}
+.navbar .navbar-brand {
+    font-size: 2em;
+}
+.navbar ul li a {
+    color: white;
+    font-size: 1.2em;
+    transition: 0.3s all;
+}
+.navbar ul li a:hover {
+    border-bottom: 3px solid blue;
+    margin-top: -3px;
+}
+.sistem-pegawai {
+    height: 90vh;
+}
+.sistem-pegawai h1 {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 4px 4px 0 blue;
+}

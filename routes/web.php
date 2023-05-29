@@ -16,7 +16,9 @@ use App\Http\Controllers\EmployeeController;
 */
 
 
-
+Route::get('/', function(){
+    return view('welcome');
+});
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/register', [AuthenticationController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/auth/register', [AuthenticationController::class, 'userRegister']);
