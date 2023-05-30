@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="/">
+        <a class="nav-link " href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -15,11 +15,13 @@
           <i class="bi bi-menu-button-wide"></i><span>Data</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/admin">
-              <i class="bi bi-circle"></i><span>Data Admin</span>
-            </a>
-          </li>
+            @if (auth()->user()->role == 1)
+            <li>
+                <a href="/admin">
+                <i class="bi bi-circle"></i><span>Data Admin</span>
+                </a>
+            </li>
+            @endif
           <li>
             <a href="/pegawai">
               <i class="bi bi-circle"></i><span>Data Pegawai</span>

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GeneralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +20,13 @@ use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function(){
     return view('welcome');
-});
+})->middleware('guest');
+
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login')->middleware('guest');
-Route::get('/register', [AuthenticationController::class, 'register'])->name('register')->middleware('guest');
-Route::post('/auth/register', [AuthenticationController::class, 'userRegister']);
 Route::post('/auth/login', [AuthenticationController::class, 'userLogin']);
 Route::post('/auth/logout', [AuthenticationController::class, 'logout'])->middleware('auth');
+
+Route::get('/dashboard', [GeneralController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/pegawai' ,[EmployeeController::class, 'index'] )->name('pegawai')->middleware('auth');
 Route::get('/tambahpegawai' ,[EmployeeController::class, 'tambahpegawai'] )->name('tambahpegawai')->middleware('auth');
@@ -32,3 +35,5 @@ Route::post('/insertdata' ,[EmployeeController::class, 'insertdata'] )->name('in
 Route::get('/tampilkandata/{id}' ,[EmployeeController::class, 'tampilkandata'] )->name('tampilkandata')->middleware('auth');
 Route::post('/updatedata/{id}' ,[EmployeeController::class, 'updatedata'] )->name('updatedata')->middleware('auth');
 Route::get('/delete/{id}' ,[EmployeeController::class, 'delete'] )->name('delete')->middleware('auth');
+
+Route::resource('/admin', AdminController::class)->middleware('auth');

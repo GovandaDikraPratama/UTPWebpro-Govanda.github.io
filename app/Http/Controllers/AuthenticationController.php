@@ -13,10 +13,6 @@ class AuthenticationController extends Controller
     {
         return view('authentication.v-login');
     }
-    public function register()
-    {
-        return view('authentication.v-registration');
-    }
     public function userLogin(Request $request)
     {
         // dd($request);
@@ -27,26 +23,10 @@ class AuthenticationController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/banner');
+            return redirect()->intended('/dashboard');
         }
         return back()->with('loginEror', 'Gagal login !!');
     }
-    public function userRegister(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|max:100',
-            'email' => 'required|unique:users|email',
-            'password' => 'required|min:5|max:255',
-        ]);
-
-        $validatedData['roles_id'] = 2;
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        User::create($validatedData);
-
-        return redirect('/login')->with('success', 'Data berhasil tersimpan !! Silahkan login !!');
-    }
-
     public function logout()
     {
         Auth::logout();

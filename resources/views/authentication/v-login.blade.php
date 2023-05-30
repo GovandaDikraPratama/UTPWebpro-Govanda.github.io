@@ -24,9 +24,6 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="text-center">
-                            <p>Tidak memiliki Akun ? <a href="/register" class="text-decoration-none">daftar</a></p>
-                        </div>
                         <button type="submit" name="buttonLogin" class="btn btn-outline-primary btn-sm">Login</button>
                         <a href="/" type="button" class="btn btn-outline-danger btn-sm">Cancle</a>
                     </form>
